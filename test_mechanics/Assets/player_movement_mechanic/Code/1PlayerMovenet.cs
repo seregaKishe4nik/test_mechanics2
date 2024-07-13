@@ -9,7 +9,6 @@ public class PleaseWork : MonoBehaviour
     public GameObject camera1;
 
     public float runSpeed = 40f;
-    public bool Lock = false;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -22,7 +21,7 @@ public class PleaseWork : MonoBehaviour
             change =! change;
             
         }
-            if(change && Lock == false){
+            if(change){
                 camera1.SetActive(true);
                 horizontalMove = Input.GetAxisRaw("Horizontal")* runSpeed;
                 if (Input.GetButtonDown("Jump"))
@@ -40,4 +39,5 @@ public class PleaseWork : MonoBehaviour
         controller.Move(horizontalMove* Time.fixedDeltaTime, false, jump);
         jump = false;
     }
+    
 }

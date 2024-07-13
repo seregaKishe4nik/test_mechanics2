@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class doorUnlock : MonoBehaviour
 {
+    
     public int enter = 0;
     public bool foxEntered = false;
     public bool VultureEntered = false;
     public GameObject door;
+    public GameObject fox;
+    public GameObject vulture;
     public Collider2D Colider;
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -46,10 +49,6 @@ public class doorUnlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(foxEntered ==true && VultureEntered == true)
-        {
-        Destroy(door);
-        }
         
     }
 }
