@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pleasework2 : MonoBehaviour
+public class PleaseWork : MonoBehaviour
 {
     public CharacterController2D controller;
 
     public GameObject camera1;
 
     public float runSpeed = 40f;
+    public bool Lock = false;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -21,13 +22,13 @@ public class pleasework2 : MonoBehaviour
             change =! change;
             
         }
-            if(change == false){
-            camera1.SetActive(false);
-            horizontalMove = Input.GetAxisRaw("Horizontal")* runSpeed;
-            if (Input.GetButtonDown("Jump"))
-            {
-              jump = true;
-            }
+            if(change && Lock == false){
+                camera1.SetActive(true);
+                horizontalMove = Input.GetAxisRaw("Horizontal")* runSpeed;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    jump = true;
+                }
         }
     } 
 
@@ -36,7 +37,7 @@ public class pleasework2 : MonoBehaviour
 
     void FixedUpdate(){
         
-        controller.Move(horizontalMove* Time.fixedDeltaTime, crouch, jump);
+        controller.Move(horizontalMove* Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 }
