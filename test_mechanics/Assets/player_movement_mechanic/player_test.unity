@@ -529,7 +529,6 @@ MonoBehaviour:
   controller: {fileID: 235563333}
   camera1: {fileID: 213104746}
   runSpeed: 40
-  Lock: 0
   change: 1
 --- !u!114 &235563333
 MonoBehaviour:
@@ -797,6 +796,8 @@ MonoBehaviour:
   foxEntered: 0
   VultureEntered: 0
   door: {fileID: 312648455}
+  fox: {fileID: 235563327}
+  vulture: {fileID: 676386217}
   Colider: {fileID: 312648457}
 --- !u!1 &607233248
 GameObject:
@@ -1006,7 +1007,6 @@ MonoBehaviour:
   controller: {fileID: 676386223}
   camera1: {fileID: 213104746}
   runSpeed: 40
-  Lock: 0
   change: 1
 --- !u!114 &676386223
 MonoBehaviour:
@@ -2179,6 +2179,6 @@ SceneRoots:
   - {fileID: 276990345}
   - {fileID: 235563331}
   - {fileID: 213104748}
-  - {fileID: 676386221}
   - {fileID: 1924878896}
   - {fileID: 312648459}
+  - {fileID: 676386221}
