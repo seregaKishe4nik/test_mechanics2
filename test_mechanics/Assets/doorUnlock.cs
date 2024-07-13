@@ -5,15 +5,36 @@ using UnityEngine;
 
 public class doorUnlock : MonoBehaviour
 {
+    public int enter = 0;
+    public bool foxEntered = false;
+    public bool VultureEntered = false;
+    public GameObject door;
     public Collider2D Colider;
-    public GameObject Fox;
-    
-    public GameObject Vulture;
-
-
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("hello");
+        if(other.gameObject.tag == "Fox")
+        {
+            foxEntered = true;
+ 
+        }
+        if(other.gameObject.tag == "Vulture" )
+        {
+            VultureEntered = true;
+
+        }
+        
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Fox")
+        {
+            foxEntered = false;
+
+        }
+        if(other.gameObject.tag == "Vulture")
+        {
+            VultureEntered = false;
+        }
     }
     
     // Start is called before the first frame update
@@ -25,6 +46,10 @@ public class doorUnlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(foxEntered ==true && VultureEntered == true)
+        {
+        Destroy(door);
+        }
         
     }
 }
