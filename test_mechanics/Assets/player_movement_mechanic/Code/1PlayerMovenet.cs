@@ -13,6 +13,7 @@ public class PleaseWork : MonoBehaviour
     bool jump = false;
     bool crouch = false;
     public bool change = true;
+    public int hp = 100;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +39,9 @@ public class PleaseWork : MonoBehaviour
         
         controller.Move(horizontalMove* Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+    public void TakeDamage(int damage){
+        hp -= damage;
     }
     
 }
