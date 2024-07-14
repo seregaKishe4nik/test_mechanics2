@@ -19,14 +19,14 @@ public class acid_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Attack();
     }
 
     public void Attack(){
-        Collider2D[] hitEnemies = Physics2D.OverlapAreaAll(attackPoint2.position,attackPoint2.position,enemyLayers);
-
-        foreach(Collider2D player in hitEnemies){
-            player.GetComponent<PleaseWork>().TakeDamage(10);
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint2.position,attackRange);
+        
+        
+        foreach(Collider2D player in hitPlayers){
             Debug.Log("We hit" + player.name);
         }
     }
