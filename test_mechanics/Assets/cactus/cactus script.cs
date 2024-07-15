@@ -11,9 +11,10 @@ public class cactus_script : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int playerDamage = 20;
+    public Animator animator;
 
     
-    public float attackRate = 2f;
+    public float attackRate = 0.1f;
     float nextAttackTime = 0f;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,8 @@ public class cactus_script : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {if(Time.time >= nextAttackTime){
+    {
+        if(Time.time >= nextAttackTime){
 
             Attack();
             nextAttackTime = Time.time + 1f/attackRate;
@@ -37,6 +39,7 @@ public class cactus_script : MonoBehaviour
         foreach(Collider2D player in hitPlayers){
             player.GetComponent<PleaseWork>().TakeDamage(playerDamage);
             Debug.Log("We hit" + player.name);
+            animator.SetTrigger("PlayerIsDamaged");
         }
     }
 
