@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class acid_script : MonoBehaviour
+public class cactus_script : MonoBehaviour
 {
 
     public Transform attackPoint;
+    public Transform attackPoint2;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public Transform attackPoint2;
     public int playerDamage = 20;
 
     
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +23,15 @@ public class acid_script : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Attack();
+    {if(Time.time >= nextAttackTime){
+
+            Attack();
+            nextAttackTime = Time.time + 1f/attackRate;
+        }
     }
 
     public void Attack(){
-        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint.position,attackRange);
+        Collider2D[] hitPlayers = Physics2D.OverlapAreaAll(attackPoint.position,attackPoint2.position,enemyLayers);
         
         
         foreach(Collider2D player in hitPlayers){
